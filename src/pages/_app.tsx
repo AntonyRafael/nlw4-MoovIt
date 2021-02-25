@@ -1,13 +1,13 @@
-import '../styles/global.css'
+import "../styles/global.css";
 
-import  {ChallangesProvider } from '../pages/contexts/ChallangesContext'
+import { ChallangesProvider } from "../pages/contexts/ChallangesContext";
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChallangesProvider>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
     </ChallangesProvider>
-    )
+  );
 }
 
-export default MyApp
+export default MyApp;
