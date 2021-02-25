@@ -28,7 +28,7 @@ const {startNewChallange} = useContext(ChallangesContext);
     
   const [time, setTime] = useState(0.05 * 60);
   const [isActive, setIsActive] = useState(false);
-  const [hasFinished, serHasFinished] = useState(false);
+  const [hasFinished, setHasFinished] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -41,6 +41,7 @@ const {startNewChallange} = useContext(ChallangesContext);
     clearTimeout(countdownTimeout);
     setIsActive(false);
     setTime(0.05 * 60);
+    setHasFinished(false);
   }
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const {startNewChallange} = useContext(ChallangesContext);
       }, 1000);
     } else if (isActive && time === 0) {
       console.log("finalizou");
-      serHasFinished(true);
+      setHasFinished(true);
       setIsActive(false);
       startNewChallange();
     }
