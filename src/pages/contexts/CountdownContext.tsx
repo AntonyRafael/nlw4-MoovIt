@@ -32,6 +32,8 @@ const {startNewChallange} = useContext(ChallangesContext);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
+  
+  console.log(setHasFinished);
 
   function startCountdown() {
     setIsActive(true);
