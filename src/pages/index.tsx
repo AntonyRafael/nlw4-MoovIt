@@ -15,7 +15,7 @@ import { ChallangesProvider } from "../pages/contexts/ChallangesContext";
 interface HomeProps {
   level: number,
   currentExperience: number,
-  challengesCompleted: number,
+  challangesCompleted: number,
 }
 
 export default function Home(props: HomeProps) {
@@ -25,7 +25,7 @@ export default function Home(props: HomeProps) {
     <ChallangesProvider 
       level={props.level} 
       currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
+      challangesCompleted={props.challangesCompleted}
       >
       <div className={styles.container}>
         <Head>
@@ -53,13 +53,13 @@ export default function Home(props: HomeProps) {
 
 // Tudo feito aqui executa no node, e não no browser para o usuário
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
+  const { level, currentExperience, challangesCompleted } = ctx.req.cookies;
 
   return {
     props: {
       level: Number(level),
       currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
+      challangesCompleted: Number(challangesCompleted),
     },
   };
 };

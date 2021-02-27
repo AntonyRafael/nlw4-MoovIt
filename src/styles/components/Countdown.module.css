@@ -75,3 +75,21 @@
     border-bottom: 5px solid var(--green);
 }
 
+
+.controlerMinutes {
+    display: flex;
+    flex-direction: column;
+}
+.controlerMinutes button {
+    background: var(--green);
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    padding: 0.25rem;
+    margin: .25rem;
+    border-radius: 5px;
+}
+
+.controlerMinutes button:last-child {
+    background: var(--red);
+}

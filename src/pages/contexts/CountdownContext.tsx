@@ -9,6 +9,8 @@ interface CountdownContextData {
     isActive: boolean;
     startCountdown: () => void;
     resetCountdown: () => void;
+    increaseTime: () => void;
+    decreaseTime: () => void;
 }
 
 interface CountdownProviderProps {
@@ -26,7 +28,7 @@ export function  CountdownProvider({children}: CountdownProviderProps ) {
 const {startNewChallange} = useContext(ChallangesContext);
    
     
-  const [time, setTime] = useState(0.05 * 60);
+  const [time, setTime] = useState(25 * 60);
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
 
@@ -42,7 +44,7 @@ const {startNewChallange} = useContext(ChallangesContext);
   function resetCountdown() {
     clearTimeout(countdownTimeout);
     setIsActive(false);
-    setTime(0.05 * 60);
+    setTime(25 * 60);
     setHasFinished(false);
   }
 
@@ -59,6 +61,23 @@ const {startNewChallange} = useContext(ChallangesContext);
     }
   }, [isActive, time]);
 
+  function increaseTime() {
+    if (time < 40 * 60) {
+      setTime(time + 60)
+    } else {
+      alert('Não da para se concetrar esse tempo todo !')
+      setTime(25 * 60)
+    }
+  }
+
+  function decreaseTime() {
+    if (time > 15 * 60) {
+      setTime(time - 60)
+    } else {
+      alert('Só isso ? Não da nem uma aula !')
+      setTime(25 * 60)
+    }
+  }
 
     return (
         <CountdownContext.Provider value={{
@@ -67,7 +86,9 @@ const {startNewChallange} = useContext(ChallangesContext);
             hasFinished,
             isActive,
             startCountdown,
-            resetCountdown
+            resetCountdown,
+            increaseTime,
+            decreaseTime
         }}>
             {children}
         </CountdownContext.Provider>
